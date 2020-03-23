@@ -12,3 +12,38 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+//Start generatePassword Function 
+
+
+
+var lowercases = "abcdefghijklmnopqrstuvwxyz";
+var uppercases = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numeric = "0123456789";
+var specialCharacter = " !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
+var pwCharacter = "";
+
+var askLower = confirm("Contains Lowercases?");
+var askUpper = confirm("Contains Uppercases?");
+var askNum = confirm("Contains Numeric?");
+var askSpecial = confirm("Contains Special Character?");
+var pwLength = prompt("Choose a length of PW : At least 8 characters and no more than 128 characters")
+
+if (askLower===true){
+  pwCharacter = pwCharacter + lowercases;
+}
+
+if (askUpper===true){
+  pwCharacter = pwCharacter + uppercases;
+}
+
+if (askNum===true){
+  pwCharacter = pwCharacter + numeric;
+}
+
+if (askSpecial===true){
+  pwCharacter = pwCharacter + specialCharacter;
+}
+
+console.log(pwCharacter);
