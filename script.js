@@ -14,44 +14,51 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-//Start generatePassword Function 
+//make generatePassword Function 
 
+function generatePassword(){
 
+  //Set Vars we need
+  var lowercases = "abcdefghijklmnopqrstuvwxyz";
+  var uppercases = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numeric = "0123456789";
+  var specialCharacter = " !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
+  var pwCharacter = "";
+  var finalPW = "";
 
-var lowercases = "abcdefghijklmnopqrstuvwxyz";
-var uppercases = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numeric = "0123456789";
-var specialCharacter = " !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
-var pwCharacter = "";
-var finalPW = "";
+  //return values we need
+  var askLower = confirm("Contains Lowercases?");
+  var askUpper = confirm("Contains Uppercases?");
+  var askNum = confirm("Contains Numeric?");
+  var askSpecial = confirm("Contains Special Character?");
+  var pwLength = prompt("Choose a length of PW : At least 8 characters and no more than 128 characters");
+  var intpwLength = parseInt(pwLength);
 
-var askLower = confirm("Contains Lowercases?");
-var askUpper = confirm("Contains Uppercases?");
-var askNum = confirm("Contains Numeric?");
-var askSpecial = confirm("Contains Special Character?");
-var pwLength = prompt("Choose a length of PW : At least 8 characters and no more than 128 characters");
-var intpwLength = parseInt(pwLength);
+  //set conditions
+  if (askLower === true) {
+    pwCharacter = pwCharacter + lowercases;
+  }
 
-if (askLower===true){
-  pwCharacter = pwCharacter + lowercases;
+  if (askUpper === true) {
+    pwCharacter = pwCharacter + uppercases;
+  }
+
+  if (askNum === true) {
+    pwCharacter = pwCharacter + numeric;
+  }
+
+  if (askSpecial === true) {
+    pwCharacter = pwCharacter + specialCharacter;
+  }
+
+  //loop for creating pw
+  for (var i = 0; i < intpwLength; i++) {
+    var ranNum = Math.floor(Math.random() * pwCharacter.length);
+    finalPW = finalPW + pwCharacter[ranNum];
+  }
+
+  //return the pw
+  return finalPW;
+
 }
 
-if (askUpper===true){
-  pwCharacter = pwCharacter + uppercases;
-}
-
-if (askNum===true){
-  pwCharacter = pwCharacter + numeric;
-}
-
-if (askSpecial===true){
-  pwCharacter = pwCharacter + specialCharacter;
-}
-
-
-for (var i = 0; i < intpwLength; i++ ){
-var ranNum = Math.floor(Math.random() * pwCharacter.length);
-finalPW = finalPW + pwCharacter[ranNum];
-}
-
-console.log(finalPW);
