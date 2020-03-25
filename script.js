@@ -13,7 +13,6 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
 //make generatePassword Function 
 
 function generatePassword(){
@@ -34,6 +33,12 @@ function generatePassword(){
   var pwLength = prompt("Choose a length of PW : At least 8 characters and no more than 128 characters");
   var intpwLength = parseInt(pwLength);
 
+  //set exception for invalid length
+  while (intpwLength<8 || intpwLength>128){
+    pwLength = prompt("Invalid length of PW : At least 8 characters and no more than 128 characters");
+    intpwLength = parseInt(pwLength);
+  }
+  
   //set conditions
   if (askLower === true) {
     pwCharacter = pwCharacter + lowercases;
