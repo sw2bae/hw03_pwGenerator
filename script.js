@@ -26,10 +26,22 @@ function generatePassword(){
   var finalPW = "";
 
   //return values we need
+  
   var askLower = confirm("Contains Lowercases?");
   var askUpper = confirm("Contains Uppercases?");
   var askNum = confirm("Contains Numeric?");
   var askSpecial = confirm("Contains Special Character?");
+  
+  // set at least one type of character
+  while (askLower === false && askUpper === false && askNum=== false && askSpecial === false) {
+    alert("Please select at least one character type!");
+    askLower = confirm("Contains Lowercases?");
+    askUpper = confirm("Contains Uppercases?");
+    askNum = confirm("Contains Numeric?");
+    askSpecial = confirm("Contains Special Character?");
+  }
+
+  // return Length
   var pwLength = prompt("Choose a length of PW : At least 8 characters and no more than 128 characters");
   var intpwLength = parseInt(pwLength);
 
@@ -55,12 +67,14 @@ function generatePassword(){
   if (askSpecial === true) {
     pwCharacter = pwCharacter + specialCharacter;
   }
+ 
 
   //loop for creating pw
   for (var i = 0; i < intpwLength; i++) {
     var ranNum = Math.floor(Math.random() * pwCharacter.length);
     finalPW = finalPW + pwCharacter[ranNum];
   }
+  
 
   //return the pw
   return finalPW;
